@@ -24,7 +24,7 @@
             header("Location:login.php?err=$err");
             exit();
         } else{
-            $err = "لطفا تمام فیلدهارا پر کنید!!";
+            $err = "لطفا تمام فیلدها را پر کنید!!";
             echo $err;
             header("Location:login.php?err=$err");
             exit();
@@ -32,14 +32,14 @@
     }
 ?>
 <main>
-    <?php
-        if (isset($_GET["err"])){
-            ?>
-            <p class="error"><?php echo $_GET["err"]; ?></p>
-            <?php
-        }
-    ?>
     <form class="SLform" action="login.php" method="post">
+        <?php
+            if (isset($_GET["err"])){
+                ?>
+                <p class="error"><?php echo $_GET["err"]; ?></p>
+                <?php
+            }
+        ?>
         <div class="SLfield">
             <label for="">نام کاربری:</label>
             <input type="text" name="username">

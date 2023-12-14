@@ -3,40 +3,46 @@
     $query = "SELECT * FROM user";
     $users = mysqli_query($db, $query);
     if(isset($_POST["signup"])){
-        $username = $_POST["username"];
-        $email = $_POST["email"];
-        foreach($users as $user){
-            if($user["username"] == $username){
-                $err = "این نام کاربری قبلا انتخاب شده است!!";
-                header("Location:signup.php?err=$err");
-                exit();
-            } elseif($user["email"] == $email){
-                $err = "این ایمیل قبلا انتخاب شده است!!";
-                header("Location:signup.php?err=$err");
-                exit();
+        if ($_POST["username"] != "" && $_POST["name"] != "" && $_POST["password"] != "" && $_POST["email"] != ""){
+            $username = $_POST["username"];
+            $email = $_POST["email"];
+            foreach($users as $user){
+                if($user["username"] == $username){
+                    $err = "این نام کاربری قبلا انتخاب شده است!!";
+                    header("Location:signup.php?err=$err");
+                    exit();
+                } elseif($user["email"] == $email){
+                    $err = "این ایمیل قبلا انتخاب شده است!!";
+                    header("Location:signup.php?err=$err");
+                    exit();
+                }
             }
+            $name = $_POST["name"];
+            $isadmin = 0;
+            $password = $_POST["password"];
+            $query2 = "INSERT INTO user(username, user.name, email, isAdmin, user.password) VALUES ('$username', '$name', '$email', '$isadmin', '$password')";
+            mysqli_query($db, $query2);
+            $_SESSION["username"] = $username;
+            header("index.php");
+            exit();
+        } else {
+            $err = "لطفا تمام فیلدها را پر کنید!!";
+            header("Location:signup.php?err=$err");
+            exit();
         }
-        $name = $_POST["name"];
-        $isadmin = 0;
-        $password = $_POST["password"];
-        $query2 = "INSERT INTO user(username, user.name, email, isAdmin, user.password) VALUES ('$username', '$name', '$email', '$isadmin', '$password')";
-        mysqli_query($db, $query2);
-        $_SESSION["username"] = $username;
-        header("index.php");
-        exit();
-        // header("Location:signitup.php?u=$username&n=$name&e=$email&p=$password&i=$isadmin");
-        // exit();
     }
 ?>
 <main>
-    <?php
-    if (isset($_GET["err"])){
-        ?>
-        <p class="error"><?php echo $_GET["err"];?></p>
-        <?php             
-    }
-    ?>
     <form class="SLform" action="signup.php" method="post">
+        <?php
+        if (isset($_GET["err"])){
+            ?>
+            <p class="error"><?php echo $_GET["err"];?></p>
+            <?php             
+        }
+        ?>
+        <div class="SLfield">
+        </div>
         <div class="SLfield">
             <label for="username">نام کاربری:</label>
             <input type="text" name="username">
