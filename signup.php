@@ -1,35 +1,31 @@
 <?php
-    session_start();
     include("./includes/header.php");
     $query = "SELECT * FROM user";
     $users = mysqli_query($db, $query);
     if(isset($_POST["signup"])){
         $username = $_POST["username"];
         $email = $_POST["email"];
-        $query1 = "SELECT * FROM user WHERE username=$username";
-        $query2 = "SELECT * FROM user WHERE email=$email";
-        $result1 = mysqli_query($db, $query1);
-        if(mysqli_num_rows($result1) ==  1){
-            $err = "این نام کاربری قبلا انتخاب شده است!!";
-            header("Location:signup.php?err=$err");
-            exit();
-        } else {
-            $result2 = mysqli_query($db, $query2);
-            if(mysqli_num_rows($result2) == 1){
+        foreach($users as $user){
+            if($user["username"] == $username){
+                $err = "این نام کاربری قبلا انتخاب شده است!!";
+                header("Location:signup.php?err=$err");
+                exit();
+            } elseif($user["email"] == $email){
                 $err = "این ایمیل قبلا انتخاب شده است!!";
                 header("Location:signup.php?err=$err");
                 exit();
-            } else {
-                $name = $_POST["name"];
-                $isadmin = 0;
-                $email = $_POST["email"];
-                $newquery = "INSERT INTO user (username, name, email, password, isAdmin) VALUES ($username, $name, $email, $password, $isadmin";
-                $adduser = mysqli_query($db, $newquery);
-                $_SESSION["username"] = $username;
-                header("Location:index.php");
-                exit();
             }
         }
+        $name = $_POST["name"];
+        $isadmin = 0;
+        $password = $_POST["password"];
+        $query2 = "INSERT INTO user(username, user.name, email, isAdmin, user.password) VALUES ('$username', '$name', '$email', '$isadmin', '$password')";
+        mysqli_query($db, $query2);
+        $_SESSION["username"] = $username;
+        header("index.php");
+        exit();
+        // header("Location:signitup.php?u=$username&n=$name&e=$email&p=$password&i=$isadmin");
+        // exit();
     }
 ?>
 <main>

@@ -1,3 +1,7 @@
 <?php
-    $db = new mysqli("localhost","root","","HeapUnderFlow");
+    $dbhost = "localhost";
+    $dbuser = "root";
+    $dbpass = "";
+    $dbname = "HeapUnderFlow";
+    $db = new mysqli($dbhost, $dbuser,$dbpass, $dbname);
 ?>

@@ -1,21 +1,33 @@
 <?php
     session_start();
     include("./includes/header.php");
+    $quey = "SELECT * FROM user";
+    $res =  $db->query($quey);
     if (isset($_POST["login"])) {
-        if (isset($_POST["username"]) && isset( $_POST["password"])){
+        if ($_POST["username"] != "" && $_POST["pass"] != "") {
             $username = $_POST["username"];
-            $password = $_POST["password"];
-            $query = "SELECT * FROM user WHERE username=$username and password=$password";
-            $result = mysqli_query($conn, $query);
-            if ($result->num_rows == 1) {
-                $_SESSION["username"] = $username;
-                header("Location:index.php");
-                exit();
-            } else {
-                $err = "نام کاربری یا رمزعبور اشتباه است!!";
-                header("Location:login.php?err=$err");
-                exit();
+            $password = $_POST["pass"];
+            foreach ($res as $row) {
+                if ($row["username"] == $username) {
+                    if ($row["password"] == $password) {
+                        $_SESSION["username"] = $username;
+                        header("Location:./index.php");
+                        exit();
+                    } else {
+                        $err = "رمزعبور اشتباه است!!";
+                        header("Location:./login.php?err=$err");
+                        exit();
+                    }
+                }
             }
+            $err = "نام کاربری اشتباه است!!";
+            header("Location:login.php?err=$err");
+            exit();
+        } else{
+            $err = "لطفا تمام فیلدهارا پر کنید!!";
+            echo $err;
+            header("Location:login.php?err=$err");
+            exit();
         }
     }
 ?>

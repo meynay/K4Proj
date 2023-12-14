@@ -1,13 +1,15 @@
 <?php
     session_start();
     include("dbconfig.php");
+    $query = "SELECT * FROM user";
+    $result = mysqli_query($db, $query);
     if (isset($_SESSION["username"])) {
-        $user = $db->query("");
-        $user->execute();
-        foreach ($user->fetchAll(PDO::FETCH_ASSOC) as $row){
-            $name = $row["name"];
-            $admin = $row["isAdmin"];
-            $image = $row["image"];
+        foreach($result as $row) {
+            if ($row["username"] == $_SESSION["username"]) {
+                $name = $row["name"];
+                $image = $row["image"];
+                $admin = $row["isAdmin"];
+            }
         }
     }
 ?>
@@ -26,14 +28,20 @@
             <ul class="topnavigation">
                 <li><a href="index.php">خانه</a></li>
                 <li><a href="search.php">جستجو</a></li>
-                <li><a href="followings.php">دنبال شوندگان</a></li>
+                <?php
+                    if (isset($_SESSION["username"])) {
+                        ?>
+                        <li><a href="followings.php">دنبال شوندگان</a></li>
+                        <?php
+                    }
+                ?>
             </ul>
         </div>
         <div class="navgroup2">
             <a class="headeruser" href="<?php
                 if(isset($_SESSION["username"])){
                     if($admin){
-                        echo "../admin/admin.php";
+                        echo "../admin.php";
                     }else {
                         echo "../userpage.php";
                     }
@@ -42,7 +50,7 @@
                 }
             ?>">
                 <p><?php
-                if (isset($name)){
+                if (isset( $_SESSION["username"])){
                     echo $name;
                 } else {
                     echo "حساب کاربری";
