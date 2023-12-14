@@ -23,7 +23,7 @@
             $query2 = "INSERT INTO user(username, user.name, email, isAdmin, user.password) VALUES ('$username', '$name', '$email', '$isadmin', '$password')";
             mysqli_query($db, $query2);
             $_SESSION["username"] = $username;
-            header("index.php");
+            header("Location:index.php");
             exit();
         } else {
             $err = "لطفا تمام فیلدها را پر کنید!!";
