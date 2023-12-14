@@ -1,6 +1,6 @@
 body {
     direction: rtl;
-    padding: 50px 30px 0 30px;
+    padding: 50px 30px 280px 30px;
 }
 
 input {
@@ -64,12 +64,18 @@ nav > div {
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
+.error {
+    background-color: rgb(255, 179, 179);
+    color: red;
+    padding: 4px 90px;
+    border-radius: 4px;
+}
+
 .SLform {
-    margin-top:100px;
+    margin:150px 0;
     background-color: rgb(248, 216, 126);
     border:1px solid rgb(252, 245, 214);
     border-radius: 20px;
@@ -95,4 +101,39 @@ main {
     align-items: center;
     margin: 10px 0;
     width:300px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+    color: rgb(196, 196, 196);
+    position: fixed;
+    right:0;
+    left:0;
+    bottom:0;
+    opacity: 0.9;
+}
+
+.footerdiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin:20px 0;
+
+} 
+
+.footerdiv2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+}
+
+.footerdiv2 > p {
+    font-size: 24px;
+    margin-top: 0;
 }
