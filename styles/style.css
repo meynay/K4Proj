@@ -143,6 +143,13 @@ main {
     width:300px;
 }
 
+.posts {
+    border-radius: 10px;
+    box-shadow: inset 5px 5px;
+    background-color: rgb(252, 233, 197);
+    padding: 10px 30px;
+}
+
 footer {
     display: flex;
     flex-direction: column;
