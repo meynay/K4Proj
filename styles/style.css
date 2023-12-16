@@ -1,45 +1,6 @@
-@font-face {
-    font-family: vazir;
-    font-style: normal;
-    font-weight: 100;
-    src: url("fonts/Vazir-Thin.eot");
-    src: url("fonts/Vazir-Thin.woff") format("woff"),
-      url("fonts/Vazir-Thin.ttf") format("ttf"),
-      url("fonts/Vazir-Thin.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: vazir;
-    font-style: normal;
-    font-weight: 300;
-    src: url("fonts/Vazir-Light.eot");
-    src: url("fonts/Vazir-Light.woff") format("woff"),
-      url("fonts/Vazir-Light.ttf") format("ttf"),
-      url("fonts/Vazir-Light.woff2") format("woff2");
-  }
-  
-  @font-face {
-    font-family: vazir;
-    font-style: normal;
-    font-weight: 400;
-    src: url("fonts/Vazir-Regular.eot");
-    src: url("fonts/Vazir-Regular.woff") format("woff"),
-      url("fonts/Vazir-Regular.ttf") format("ttf"),
-      url("fonts/Vazir-Regular.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: vazir;
-    font-style: normal;
-    font-weight: 950;
-    src: url("fonts/Vazir-Black.eot");
-    src: url("fonts/Vazir-Black.woff") format("woff"),
-      url("fonts/Vazir-Black.ttf") format("ttf"),
-      url("fonts/Vazir-Black.woff2") format("woff2");
-  }
-  
-
 body {
     direction: rtl;
-    font-family: 'vazir', 'arial';
+    font-family: 'Lalezar';
     padding: 50px 30px 280px 30px;
 }
 
@@ -91,6 +52,7 @@ nav > div {
 
 .userheaderimage {
     width:40px;
+    height: 40px;
     border-radius: 20px;
     margin-top: 5px;
 }
@@ -144,10 +106,72 @@ main {
 }
 
 .posts {
+    margin: 20px 0;
     border-radius: 10px;
-    box-shadow: inset 5px 5px;
-    background-color: rgb(252, 233, 197);
-    padding: 10px 30px;
+    background-color: rgb(250, 237, 213);
+    padding: 15px 50px;
+    width: 1200px;
+}
+
+.Theposthead {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Theposthead > img {
+    margin-left: 5px;
+}
+
+.postfoot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.postfoot > i {
+    background-color: rgb(206, 204, 201);
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.theuserpaging {
+    padding: 10px 20px;
+    margin: 20px 0;
+    width:1250px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: rgb(255, 254, 208);
+}
+
+.usershowUname {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.usershowprofileimage {
+    width:100px;
+    height:100px;
+    border-radius: 50px;
+}
+
+.usershowbuttonfollow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.follow {
+    background-color: greenyellow;
+}
+
+.unfollow {
+    background-color: rgb(255, 142, 142);
 }
 
 footer {
@@ -161,7 +185,7 @@ footer {
     right:0;
     left:0;
     bottom:0;
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 .footerdiv {
