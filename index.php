@@ -35,13 +35,11 @@
                     <i><?php echo $row2["Name"];?></i>
                     <a href="singlepost.php?pid=<?php echo $row['ID']?>">بیشتر...</a>
                 </div>
-                
             </div>
             <?php
             }
         }
     ?>
-    <h1>index.php</h1>
 </main>
 <?php
     include("./includes/footer.php");
