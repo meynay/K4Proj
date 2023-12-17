@@ -59,7 +59,7 @@
                         ?>
                     </select>
                 </div>
-                <button type="submit" name="edited">اضافه کردن پست</button>
+                <button type="submit" name="edited" style="margin-top:10px;">اضافه کردن پست</button>
             </form>
         <?php
     }

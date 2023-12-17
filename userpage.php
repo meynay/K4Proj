@@ -3,7 +3,7 @@
     include("./includes/header.php");
     $username = $_SESSION['username'];
     $queryuser = "SELECT * FROM user WHERE username='$username'";
-    $queryposts = "SELECT * FROM Post WHERE username='$username'";
+    $queryposts = "SELECT * FROM Post WHERE username='$username' ORDER BY postDate DESC";
     $user = mysqli_fetch_assoc(mysqli_query($db, $queryuser));
     $res2 = mysqli_query($db, $queryposts);
     if (isset($_GET['pid'])) {
@@ -19,6 +19,17 @@
         mysqli_query($db, $queryuser);
         header("Location:userpage.php");
         exit();
+    }
+    if(isset($_POST["changepass"])) {
+        $oldpass = $_POST["oldpass"];
+        $newpass = $_POST["newpass"];
+        $thepass = $user["password"];
+        $didwechanged = false;
+        if($thepass == $oldpass) {
+            $didwechanged = true;
+            $querrr = "UPDATE user SET password='$newpass' WHERE username='$username'";
+            mysqli_query($db, $querrr);
+        } 
     }
 ?>
 <main>
@@ -39,6 +50,32 @@
                 <label for="name" style="margin-left:20px;">نام:</label>
                 <input type="text" style="margin-left:20px;" name="name" value="<?php echo $user['name'];?>">
                 <button type="submit" name="submitname">تغییر نام</button>
+            </form>
+        </div>
+        <?php
+        if (isset($_POST["changepass"])){
+            if  ($didwechanged ) {
+                ?>
+                <p class="success">رمز عبور با موفقیت تغییر یافت</p>
+                <?php
+            } else {
+                ?>
+                <p class="error">رمز قبلی اشتباه است!!!</p>
+                <?php
+            }
+        }
+        ?>
+        <div>
+            <form action="userpage.php" method="post" class="nameform">
+                <div>
+                    <label for="oldpass" style="margin-left:20px;">رمز عبور قبلی</label>
+                    <input type="password" style="margin-left:20px;" name="oldpass">
+                </div>
+                <div>
+                    <label for="newpass" style="margin-left:20px;">رمز عبور جدید</label>
+                    <input type="password" style="margin-left:20px;" name="newpass">
+                </div>
+                <button type="submit" name="changepass">تغییر رمز عبور</button>
             </form>
         </div>
         <div class="userpageposts">

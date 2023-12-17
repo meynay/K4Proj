@@ -1,6 +1,6 @@
         <footer>
             <div class="footerdiv">
-                <h1>نویسندگان سایت:</h1>
+                <h2>نویسندگان سایت:</h2>
             </div>
             <div class="footerdiv">
                 <div class="footerdiv2">

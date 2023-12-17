@@ -10,6 +10,9 @@
     if (isset($_SESSION['username']))
     {
         $userName = $_SESSION['username'];
+        if($username == $userName) {
+            header("Location:userpage.php");
+        }
         $quer = "SELECT * FROM user WHERE username='$userName'";
         $theuserinside = mysqli_fetch_assoc(mysqli_query($db, $quer));
         $queryy = "SELECT * FROM Follow WHERE follower='$userName' and Follow.following='$username'";
