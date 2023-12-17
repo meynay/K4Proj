@@ -6,8 +6,10 @@
         $description = $_GET['desc'];
         $title = $_GET['title'];
         $pid = $_GET['pid'];
-        $query1 = "UPDATE Post SET Post.TItle='$title' AND Post.description='$description' WHERE Post.ID='$pid'";
+        $query1 = "UPDATE Post SET TItle='$title' WHERE ID='$pid'";
+        $query2 = "UPDATE Post SET description='$description' WHERE ID='$pid'";
         mysqli_query($db, $query1);
+        mysqli_query($db, $query2);
         header("Location:userpage.php");
         exit();
     }
