@@ -206,6 +206,26 @@ main {
     width: 500px;
 }
 
+.textareacontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin:20px 0;
+}
+
+textarea {
+    margin:0 10px;
+}
+
+.editpost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(252, 225, 189);
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+
 footer {
     display: flex;
     flex-direction: column;

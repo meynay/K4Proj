@@ -38,6 +38,7 @@
                     if (isset($_SESSION["username"])) {
                         ?>
                         <li><a href="followings.php">دنبال شوندگان</a></li>
+                        <li><a href="editpost.php">اضافه کردن پست</a></li>
                         <?php
                     }
                 ?>

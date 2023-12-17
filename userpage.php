@@ -55,13 +55,6 @@
                         <?php echo $row["username"];?></a>
                         <h3><?php echo $row["TItle"];?></h3>
                     </div>
-                    <?php 
-                    if (isset($row["image"])) {
-                        ?>
-                        <img class="post-image" src="./assets/posts/<?php echo $row["image"];?>" alt="">
-                        <?php
-                    }
-                    ?>
                     <p><?php echo $row["description"];?></p>
                     <div class="postfoot">
                         <p class="postdate"><?php echo $row["postDate"];?></p>
