@@ -31,6 +31,10 @@
             mysqli_query($db, $querrr);
         } 
     }
+    $queryer = "SELECT * FROM Follow WHERE following='$username'";
+    $resultyer = mysqli_query($db, $queryer);
+    $querying = "SELECT * FROM Follow WHERE follower='$username'";
+    $resulting = mysqli_query($db, $querying);
 ?>
 <main>
     <div class="theuserpaging">
@@ -51,6 +55,10 @@
                 <input type="text" style="margin-left:20px;" name="name" value="<?php echo $user['name'];?>">
                 <button type="submit" name="submitname">تغییر نام</button>
             </form>
+        </div>
+        <div>
+            <p>دنبال کنندگان: <?php echo $resultyer->num_rows;?></p>
+            <p>دنبال شوندگان: <?php echo $resulting->num_rows;?></p>
         </div>
         <?php
         if (isset($_POST["changepass"])){

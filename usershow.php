@@ -18,6 +18,10 @@
         $queryy = "SELECT * FROM Follow WHERE follower='$userName' and Follow.following='$username'";
         $followed = mysqli_fetch_assoc(mysqli_query($db, $queryy));
     }
+    $queryer = "SELECT * FROM Follow WHERE following='$username'";
+    $resultyer = mysqli_query($db, $queryer);
+    $querying = "SELECT * FROM Follow WHERE follower='$username'";
+    $resulting = mysqli_query($db, $querying);
 ?>
     <main>
         <div class="theuserpaging">
@@ -47,6 +51,10 @@
                     ?>
                 </button>
                 </a>
+            </div>
+            <div>
+                <p>دنبال کنندگان: <?php echo $resultyer->num_rows;?></p>
+                <p>دنبال شوندگان: <?php echo $resulting->num_rows;?></p>
             </div>
             <?php
             }
