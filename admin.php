@@ -28,7 +28,7 @@
                 ?>
                 <div class="language">
                     <p styel="margin-right:50px;"><?php echo $lang['Name'];?></p>
-                    <a class="delete" href="deletelang?id=<?php echo $lang['ID'];?>">حذف زبان</a>
+                    <a class="delete" href="deletelang.php?id=<?php echo $lang['ID'];?>">حذف زبان</a>
                 </div>
                 <?php
             }
