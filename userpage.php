@@ -1,6 +1,10 @@
 <?php
     session_start();
     include("./includes/header.php");
+    if (!isset($_SESSION["username"])){
+        header("Location:index.php");
+        exit();
+    }
     $username = $_SESSION['username'];
     $queryuser = "SELECT * FROM user WHERE username='$username'";
     $queryposts = "SELECT * FROM Post WHERE username='$username' ORDER BY postDate DESC";

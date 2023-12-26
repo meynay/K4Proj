@@ -1,6 +1,18 @@
 <?php
     session_start();
     include("./includes/header.php");
+    if(!isset($_SESSION["username"])){
+        header("Location:index.php");
+        exit();
+    } else {
+        $username = $_SESSION["username"];
+        $queryuser = "SELECT * FROM user WHERE username='$username'";
+        $res = mysqli_fetch_assoc(mysqli_query($db, $queryuser));
+        if($res['isAdmin'] == 0){
+            header("Location:index.php");
+            exit();
+        }
+    }
     $querylangs = "SELECT * FROM Proglan";
     $queryusers = "SELECT * FROM user WHERE isAdmin='0'";
     $resultusers = mysqli_query($db, $queryusers);
